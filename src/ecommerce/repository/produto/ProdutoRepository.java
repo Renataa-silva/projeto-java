@@ -1,4 +1,4 @@
-package conta.repository.produto;
+package ecommerce.repository.produto;
 
 import ecommerce.model.Produto;
 
