@@ -9,6 +9,7 @@ public interface ContaRepository {
 	public void listarTodas();
 	public void deletar(Conta conta);
 	public void atualizar(Conta conta);
+	public Conta login(String usuario, String senha);
 	
 
 }

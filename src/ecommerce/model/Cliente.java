@@ -33,7 +33,7 @@ public class Cliente extends Conta {
 		this.telefone = telefone;
 	}
 	@Override
-	public void sobre() {
+	public void visualizar() {
 		System.out.println("Cliente : " + this.getNome());
 		
 	}

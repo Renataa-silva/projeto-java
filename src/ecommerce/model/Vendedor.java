@@ -9,7 +9,7 @@ public class Vendedor extends Conta {
 	}
 
 	@Override
-	public void sobre() {
+	public void visualizar() {
 		System.out.println("Vendedor: " + this.getNome());
 		
 	}

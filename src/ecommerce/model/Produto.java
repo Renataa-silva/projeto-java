@@ -4,10 +4,12 @@ public class Produto {
 	
 	private String nome;
 	private float valor;
-	public Produto(String nome, float valor) {
+	private int numero;
+	public Produto(String nome, float valor, int numero) {
 		super();
 		this.nome = nome;
 		this.valor = valor;
+		this.numero = numero;
 	}
 	public String getNome() {
 		return nome;
@@ -21,5 +23,12 @@ public class Produto {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 
 }

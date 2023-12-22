@@ -38,7 +38,9 @@ public abstract class Conta {
 		this.nome = nome;
 	}
 	
-	public abstract void sobre();
+	public abstract void visualizar();
+	
+	
 	
 
 }

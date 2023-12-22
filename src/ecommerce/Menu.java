@@ -2,11 +2,25 @@ package ecommerce;
 
 import java.util.Scanner;
 
+import ecommerce.controller.ContaController;
+import ecommerce.model.Cliente;
+import ecommerce.model.Conta;
+
 public class Menu {
 
+	static Scanner leia = new Scanner(System.in);
+	static ContaController contas = new ContaController();
+	
+	
 	public static void main(String[] args) {
-
-		Scanner leia = new Scanner(System.in);
+		
+		String nome;
+		String endereco;
+		String telefone;
+		String email;
+		String usuario;
+		String senha;
+		
 
 		int opcao;
 
@@ -39,11 +53,26 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("Criar Conta\n\n");
-
+				
+				System.out.println("Digite o Usuario: ");
+				usuario = leia.next();
+				System.out.println("Digite a Senha: ");
+				senha = leia.next();				
+				System.out.println("Digite o Nome: ");
+				nome = leia.next();
+				System.out.println("Digite o Email: ");
+				email = leia.next();
+				System.out.println("Digete o Endereço: ");
+				endereco =leia.next();
+				System.out.println("Digite o Telefone");
+				telefone = leia.next();
+				
+				contas.cadastrar(new Cliente(0, senha, usuario, nome, email, endereco, telefone));
 				break;
 			case 2:
 				System.out.println("Login\n\n");
-
+				var conta = menulogin();
+				
 				break;
 			default:
 				System.out.println("\nOpção Inválida!\n");
@@ -54,6 +83,28 @@ public class Menu {
 
 	}
 
+	public static Conta menulogin() {
+		String usuario;
+		String senha;
+		System.out.println("\n*********************************************************");
+		System.out.println("Usuario: ");
+		usuario = leia.next();
+		System.out.println("Senha: ");
+		senha = leia.next();
+		System.out.println("*********************************************************");
+		var conta = contas.login(usuario, senha);
+		if (conta == null) {
+			System.out.println("Usuario não encontrado!");
+		}else {
+			System.out.println("Login realizado com sucesso!");
+		}
+		return conta;
+		
+	}
+	
+	
+	
+	
 	public static void sobre() {
 		System.out.println("\n*********************************************************");
 		System.out.println("Projeto Desenvolvido por: Renata Pereira ");
