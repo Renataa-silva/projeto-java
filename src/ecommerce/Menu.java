@@ -3,13 +3,17 @@ package ecommerce;
 import java.util.Scanner;
 
 import ecommerce.controller.ContaController;
+import ecommerce.controller.ProdutoController;
+import ecommerce.model.Carrinho;
 import ecommerce.model.Cliente;
 import ecommerce.model.Conta;
+import ecommerce.model.Pedido;
 
 public class Menu {
 
 	static Scanner leia = new Scanner(System.in);
 	static ContaController contas = new ContaController();
+	static ProdutoController produtos = new ProdutoController();
 	
 	
 	public static void main(String[] args) {
@@ -21,7 +25,7 @@ public class Menu {
 		String usuario;
 		String senha;
 		
-
+		produtos.inicializar();
 		int opcao;
 
 		while (true) {
@@ -97,8 +101,51 @@ public class Menu {
 			System.out.println("Usuario não encontrado!");
 		}else {
 			System.out.println("Login realizado com sucesso!");
+			menuproduto();
 		}
 		return conta;
+		
+	}
+	public static void menuproduto() {
+		var carrinho = new Carrinho();
+		int opcao = 0;
+		while (opcao !=4) {
+			
+		
+		System.out.println("*****************************************************");
+		System.out.println("                                                     ");
+		System.out.println("            1 - Listar Produtos                      ");
+		System.out.println("            2 - Escolher Produto                     ");
+		System.out.println("            3 - Olhar Carrinho                       ");
+		System.out.println("            4 - Finalizar                            ");
+		System.out.println("                                                     ");
+		System.out.println("*****************************************************");
+		System.out.println("Entre com a opção desejada:                          ");
+		System.out.println("                                                     ");
+		
+		opcao = leia.nextInt();
+		
+		switch (opcao) {
+		case 1:
+			produtos.listarTodas();
+		break;
+		case 2:
+			System.out.println("Digite o código do produto: ");
+			var codproduto = leia.nextInt();
+			System.out.println("Digite a quantidade do produto: ");
+			var qtdproduto = leia.nextInt();
+			var produto = produtos.buscarNaCollection(codproduto);
+			carrinho.getListaPedidos().add(new Pedido(produto, qtdproduto));
+		break;
+		case 3:
+			carrinho.totalcarrinho();
+		}
+		
+		
+	
+		
+		
+		}
 		
 	}
 	
